@@ -5,28 +5,41 @@ class Television:
     MAX_CHANNEL = 3
 
     def __init__(self) -> None:
+        """
+        Method that creates all the instance variables
+        """
         self.__muted = False
         self.__volume = Television.MIN_VOLUME
         self.__status = False
         self.__channel = Television.MIN_CHANNEL
 
-    def power(self):
+    def power(self) -> None:
+        """
+        Method that turns on the power for the TV
+        """
         self.__status = not self.__status
         
 
     def mute(self) -> None:
-        self.__muted = not self.__muted
+        """
+        Method that mutes the TV volume
+        """
+        if self.__status:
+            self.__muted = not self.__muted
     
-    def channel_up(self):
+    def channel_up(self) -> None:
+         """
+         Method to increase the TV volume
+         """
          if self.__status:
             if self.__channel < Television.MAX_CHANNEL:
                 self.__channel += 1
             else:
                 self.__channel = Television.MIN_CHANNEL
 
-    def channel_down(self):
+    def channel_down(self) -> None:
         """
-        Method to decrese the tv channel.
+        Method to decrese the TV channel.
         """
         if self.__status:
             if self.__channel > Television.MIN_CHANNEL:
@@ -34,14 +47,20 @@ class Television:
             else:
                 self.__channel = Television.MAX_CHANNEL
 
-    def volume_up(self):
+    def volume_up(self) -> None:
+        """
+        Method to increse the TV volume.
+        """
         if self.__status:
             self.__muted = False
             if self.__volume < Television.MAX_VOLUME:
                 self.__volume += 1
 
-    def volume_down(self):
-         if self.__status:
+    def volume_down(self) -> None:
+        """
+        Method to decrese the TV volume.
+        """
+        if self.__status:
             self.__muted = False
             if self.__volume > Television.MIN_VOLUME:
                 self.__volume -= 1
